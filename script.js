@@ -86,3 +86,15 @@ console.log(arr.slice(-1)); // thats how we can take last element
 console.log(arr.slice(1, -2)); // -2 will extract except the last two element
 console.log(arr.slice()); // when  you want to change multiple method here then  use slice mehtod
 console.log([...arr]);
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////Splice Method /////////////////////////////////////
+
+console.log(arr.splice(-1)); // In Splice Method the Extracted Method got remove from the original Array
+console.log(arr);
+arr.splice(1, 2);
+console.log(arr);
+
+const arr2 = ["j", "i", "h", "g", "j"];
+console.log(arr2.reverse());
+console.log(arr2); // so this reverse method  manipulated the original array (arr2)
