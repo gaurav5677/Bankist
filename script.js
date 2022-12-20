@@ -70,7 +70,7 @@ const currencies = new Map([
   ["EUR", "Euro"],
   ["GBP", "Pound sterling"],
 ]);
-
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
@@ -90,11 +90,23 @@ console.log([...arr]);
 
 ///////////////////////////////////////////Splice Method /////////////////////////////////////
 
-console.log(arr.splice(-1)); // In Splice Method the Extracted Method got remove from the original Array
-console.log(arr);
-arr.splice(1, 2);
-console.log(arr);
+// console.log(arr.splice(-1)); // In Splice Method the Extracted Method got remove from the original Array
+// console.log(arr);
+// arr.splice(1, 2);
+// console.log(arr);
 
 const arr2 = ["j", "i", "h", "g", "j"];
 console.log(arr2.reverse());
 console.log(arr2); // so this reverse method  manipulated the original array (arr2)
+
+///////////////////////////////////////////Concat  Method /////////////////////////////////////
+
+const letters = arr.concat(arr2);
+console.log(letters);
+console.log([...arr, ...arr2]);
+
+///////////////////////////////////////////Join  Method /////////////////////////////////////
+
+console.log(letters.join(" - "));
+*/
+///////////////////////////////////////////  Looping Arrays_For EAch /////////////////////////////////////
