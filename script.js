@@ -74,3 +74,15 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+let arr = ["a", "b", "c", "d", "e"];
+
+////////////////////////////////////////////////////Slice Method ////////////////////////////////
+console.log(arr.slice(2)); // this retures new arrya but only the extracted part
+
+console.log(arr.slice(2, 4));
+console.log(arr.slice(-1)); // thats how we can take last element
+
+console.log(arr.slice(1, -2)); // -2 will extract except the last two element
+console.log(arr.slice()); // when  you want to change multiple method here then  use slice mehtod
+console.log([...arr]);
