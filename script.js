@@ -110,3 +110,29 @@ console.log([...arr, ...arr2]);
 console.log(letters.join(" - "));
 */
 ///////////////////////////////////////////  Looping Arrays_For EAch /////////////////////////////////////
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// for (const movement of movements) {
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(` Movement ${i + 1}:You deposited ${movement}`);
+  } else {
+    console.log(` Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+console.log("   -------------ForEach------------     ");
+movements.forEach(function (mov, i, arr) {
+  // here the name doesn't matter but what  matter is the order  , the  first one is the Current Element , the seconed one is index and the
+  // thrid one is the entire arrya
+  if (mov > 0) {
+    console.log(` Movement ${i + 1}:You deposited ${mov}`);
+  } else {
+    console.log(` Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
+  }
+});
+
+// on iteration 0 : function(200) this  will call the value of 200
+// on iteration 1 : function(450) this  will call the value of 450
+// so on and so forth
