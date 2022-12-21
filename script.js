@@ -106,7 +106,7 @@ console.log([...arr, ...arr2]);
 console.log(letters.join(" - "));
 */
 ///////////////////////////////////////////  Looping Arrays_For EAch /////////////////////////////////////
-
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // for (const movement of movements) {
@@ -135,6 +135,7 @@ movements.forEach(function (mov, i, arr) {
 
 ///////////////////////////////////////////  Looping Arrays_For EAch on maps and sets /////////////////////////////////////
 //Maps
+/*
 const currencies = new Map([
   ["USD", "United States Dollar"],
   ["EUR", "EURO"],
@@ -151,3 +152,4 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, _, map) {
   console.log(`${value}: ${value}`);
 });
+*/
