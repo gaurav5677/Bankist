@@ -4,6 +4,8 @@
 /////////////////////////////////////////////////
 // BANKIST APP
 
+
+
 // Data
 const account1 = {
   owner: "Jonas Schmedtmann",
@@ -89,6 +91,8 @@ let arr = ["a", "b", "c", "d", "e"];
 
 ////////////////////////////////////////////////////Slice Method ////////////////////////////////
 console.log(arr.slice(2)); // this retures new arrya but only the extracted part
+
+
 
 console.log(arr.slice(2, 4));
 console.log(arr.slice(-1)); // thats how we can take last element
