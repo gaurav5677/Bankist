@@ -63,22 +63,35 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
-const displayMovements = function (movements) {
-  containerMovements.innerHTML = " "; // innterHtml is bit similar to text context . innterHTML return everything including the html , but here  it is used as a setter
-  movements.forEach(function (mov, i) {
-    const type = mov > 0 ? "deposit" : "withdrawal";
 
-    const html = `<div class="movements__row">
-    <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
+// it's always best to creat a function 
+
+const displayMovements = function (movements) { // receives data from movements with which it should actally work  
+
+
+  containerMovements.innerHTML = '';
+  //.textcontent = 0 
+
+
+
+  movements.forEach(function (mov, i) {
+
+
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+     <div class="movements__row">
+    <div class="movements__type  movements__type--${type}"> ${i + 1} ${type}</div>
     <div class="movements__value">${mov}</div>
- </div>
- `;
-    containerMovements.insertAdjacentHTML("afterbegin", html);
+ </div>`;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
   });
+
 };
 displayMovements(account1.movements);
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
+///////////////////////////////////////////////// 
+///////////////////////////////////////////////// 
 // LECTURES
 
 //
@@ -171,3 +184,28 @@ currenciesUnique.forEach(function (value, _, map) {
   console.log(`${value}: ${value}`);
 });
 */
+
+/* 
+Julia's and kate's dogs*/
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const dogsJuliaCorrected = dogsJulia.Slice();
+  dogsJuliaCorrected.splice(0, 1);// zero'th  element and want to remove only 1 element through the array 
+  dogsJuliaCorrected.splice(-2); // last two elements 
+  console.log(dogsJuliaCorrected);
+
+
+  const dogs = dogsJuliaCorrected.concat(dogsKate);
+  console.log(dogs);
+
+  // dog number 1 is an adult , and is 5 year old   or a puppy (Dog number 2 is still a puppy)
+  dogs.forEach(function (dog, i) {
+    if (dog >= 3) {
+      console.log(`Dog number ${i + 1} is an adult , and is ${dog} years old `)
+    } else {
+      console.log(`Dog number ${i + 1} is still a puppy`);
+    }
+  })
+}
+
+checkDogs([3, 5, 2, 12, 7][4, 1, 15, 8, 3]);
