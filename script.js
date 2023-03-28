@@ -188,24 +188,65 @@ currenciesUnique.forEach(function (value, _, map) {
 /* 
 Julia's and kate's dogs*/
 
-const checkDogs = function (dogsJulia, dogsKate) {
-  const dogsJuliaCorrected = dogsJulia.Slice();
-  dogsJuliaCorrected.splice(0, 1);// zero'th  element and want to remove only 1 element through the array 
-  dogsJuliaCorrected.splice(-2); // last two elements 
-  console.log(dogsJuliaCorrected);
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   const dogsJuliaCorrected = dogsJulia.Slice();
+//   dogsJuliaCorrected.splice(0, 1);// zero'th  element and want to remove only 1 element through the array 
+//   dogsJuliaCorrected.splice(-2); // last two elements 
+//   console.log(dogsJuliaCorrected);
 
 
-  const dogs = dogsJuliaCorrected.concat(dogsKate);
-  console.log(dogs);
+//   const dogs = dogsJuliaCorrected.concat(dogsKate);
+//   console.log(dogs);
 
-  // dog number 1 is an adult , and is 5 year old   or a puppy (Dog number 2 is still a puppy)
-  dogs.forEach(function (dog, i) {
-    if (dog >= 3) {
-      console.log(`Dog number ${i + 1} is an adult , and is ${dog} years old `)
-    } else {
-      console.log(`Dog number ${i + 1} is still a puppy`);
-    }
-  })
-}
+//   // dog number 1 is an adult , and is 5 year old   or a puppy (Dog number 2 is still a puppy)
+//   dogs.forEach(function (dog, i) {
+//     if (dog >= 3) {
+//       console.log(`Dog number ${i + 1} is an adult , and is ${dog} years old `)
+//     } else {
+//       console.log(`Dog number ${i + 1} is still a puppy`);
+//     }
+//   })
+// }
 
-checkDogs([3, 5, 2, 12, 7][4, 1, 15, 8, 3]);
+// checkDogs([3, 5, 2, 12, 7][4, 1, 15, 8, 3]);
+
+
+//// Map Data Transformation method
+
+
+// over here it automatically generate the new array 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurToUsd = 1.1;
+// const movementsUSD = movements.map(function (mov) {
+//   return mov * eurToUsd;
+// });
+
+const movementsUSD = movements.map(mov => mov * eurToUsd);
+
+
+console.log(movements);
+console.log(movementsUSD);
+
+// more inline with functinonal programming ;; this is the way to go in mordern JavaScript
+
+
+// same using for loop
+
+
+// here we manually created new array
+
+// const movementsUSDfor = [];
+// for (const move of movements) {
+//   movementsUSDfor.push(move * eurToUsd);
+
+
+
+// }
+// console.log(movementsUSDfor);
+
+
+
+movements.map((mov, i, arr) =>){
+
+}  // current element, index , entire array 
