@@ -384,3 +384,12 @@ const maximumValue = movements.reduce(function (accumulator, currentValue) {
 }, movements[0]);
 
 console.log(maximumValue);
+
+// converting the  in Arrow Function 
+const max = movements.reduce((acc, current) => {
+  if (acc > current) return acc;
+  else return current;
+}, movements[0]);
+
+console.log(max);
+
