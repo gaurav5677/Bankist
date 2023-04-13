@@ -362,7 +362,7 @@ console.log(withdrawalsArrow);
 // console.log(balance);
 
 
-const balance = movements.reduce((acc, cur) => acc + cur, 0);
+/* const balance = movements.reduce((acc, cur) => acc + cur, 0);
 console.log(balance);
 // do the same thing manually using for loop 
 
@@ -371,6 +371,7 @@ let balanceFOr = 0;
 for (const mov of movements) balanceFOr += mov;
 console.log(balanceFOr);
 
+*/
 // now we are going to calculate the maximum value in the movement
 // using reduce method 
 
