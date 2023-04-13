@@ -64,12 +64,15 @@ const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
 
+
+// 145 Creating DOM Event 
 // it's always best to creat a function 
 
 const displayMovements = function (movements) { // receives data from movements with which it should actally work  
 
 
   containerMovements.innerHTML = '';
+  // here we are using innerHTML as a setter
   //.textcontent = 0 
 
 
@@ -86,12 +89,61 @@ const displayMovements = function (movements) { // receives data from movements 
  </div>`;
 
     containerMovements.insertAdjacentHTML('afterbegin', html);
+    // A DOMstring representing the position  relative  to the element  , must be one of the following 
+
+    // beforebegin , afterbegin, beforeend , afterend 
   });
 
 };
+
+
 displayMovements(account1.movements);
-///////////////////////////////////////////////// 
-///////////////////////////////////////////////// 
+
+
+
+
+
+
+
+
+
+
+
+// console.log(containerMovements.innerHTML);
+
+///149 
+///////// ////////////////// Computing Usernames ////////////////
+// here we are creating userNames of the data 
+const creatUserNames = function (accs) {
+  // using foreach method buz we do not want to creat a new array , just want to moidfy 
+  //  the array that we get as an input
+  // we use forEach method simply to do some work without returning anything 
+
+  accs.forEach(function (acc) {
+    acc.username = acc.owner.toLowerCase().split(' ').map(word => word[0]).join('');
+
+  });
+
+
+
+};
+
+creatUserNames(accounts);
+console.log(accounts);
+
+// console.log(creatUserNames("Steven Thomas Williams"));
+// const user = "Steven Thomas Williams"; // stw
+
+
+
+// console.log(username);
+
+
+
+
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
 // LECTURES
 
 //
@@ -106,7 +158,7 @@ let arr = ["a", "b", "c", "d", "e"];
 console.log(arr.slice(2)); // this retures new arrya but only the extracted part
 
 
-
+w,,,
 console.log(arr.slice(2, 4));
 console.log(arr.slice(-1)); // thats how we can take last element
 
@@ -164,7 +216,7 @@ movements.forEach(function (mov, i, arr) {
 // on iteration 1 : function(450) this  will call the value of 450
 // so on and so forth
 
-///////////////////////////////////////////  Looping Arrays_For EAch on maps and sets /////////////////////////////////////
+/*                    Looping Arrays_For EAch on maps and sets                        */
 //Maps
 /*
 const currencies = new Map([
@@ -184,14 +236,14 @@ currenciesUnique.forEach(function (value, _, map) {
   console.log(`${value}: ${value}`);
 });
 */
+/*                   146 Coding Challenge Julia's and kate's dogs                          */
 
-/* 
-Julia's and kate's dogs*/
+
 
 // const checkDogs = function (dogsJulia, dogsKate) {
 //   const dogsJuliaCorrected = dogsJulia.Slice();
-//   dogsJuliaCorrected.splice(0, 1);// zero'th  element and want to remove only 1 element through the array 
-//   dogsJuliaCorrected.splice(-2); // last two elements 
+//   dogsJuliaCorrected.splice(0, 1);// zero'th  element and want to remove only 1 element through the array
+//   dogsJuliaCorrected.splice(-2); // last two elements
 //   console.log(dogsJuliaCorrected);
 
 
@@ -210,23 +262,24 @@ Julia's and kate's dogs*/
 
 // checkDogs([3, 5, 2, 12, 7][4, 1, 15, 8, 3]);
 
+/*                  147 **** Map Data Transformation method                            */
 
-//// Map Data Transformation method
 
+// // over here it automatically generate the new array
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-// over here it automatically generate the new array 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const eurToUsd = 1.1;
+// // const movementsUSD = movements.map(function (mov) {
+// //   return mov * eurToUsd;
+// // });
 
-const eurToUsd = 1.1;
 // const movementsUSD = movements.map(function (mov) {
 //   return mov * eurToUsd;
-// });
-
-const movementsUSD = movements.map(mov => mov * eurToUsd);
+// })
 
 
-console.log(movements);
-console.log(movementsUSD);
+// console.log(movements);
+// console.log(movementsUSD);
 
 // more inline with functinonal programming ;; this is the way to go in mordern JavaScript
 
@@ -247,6 +300,19 @@ console.log(movementsUSD);
 
 
 
-movements.map((mov, i, arr) =>){
+// current element, index , entire array
 
-}  // current element, index , entire array 
+// Array.prototype.unique = function () {
+//   console.log("Hello There");
+// }
+
+// console.log(Array.prototype);
+// Array.prototype.unique();
+
+// const arr1 = [1, 2, 3, 4];
+// arr1.unique()
+
+
+
+/*                       Filter Method                 */
+
