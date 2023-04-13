@@ -147,8 +147,9 @@ console.log(accounts);
 // LECTURES
 
 //
-/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+/*
+
 
 /////////////////////////////////////////////////
 
@@ -316,3 +317,34 @@ currenciesUnique.forEach(function (value, _, map) {
 
 /*                       Filter Method                 */
 
+//now we will try to make an array of deposites from movements 
+
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(movements);
+console.log(deposits);
+
+const depositeFor = [];
+
+for (const mov of movements) {
+  if (mov > 0) {
+    depositeFor.push(mov);
+  }
+}
+
+console.log(depositeFor);
+
+
+// Now we will build arrya for withdrawals
+
+
+const withdrawals = movements.filter(function (move) {
+  return move < 0;
+});
+console.log(withdrawals);
+
+// using arrow function 
+
+const withdrawalsArrow = movements.filter(move => move < 0);
+console.log(withdrawalsArrow);
