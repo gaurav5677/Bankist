@@ -317,8 +317,8 @@ currenciesUnique.forEach(function (value, _, map) {
 
 /*                       Filter Method                 */
 
-//now we will try to make an array of deposites from movements 
-
+//now we will try to make an array of deposites from movements
+/*
 const deposits = movements.filter(function (mov) {
   return mov > 0;
 });
@@ -344,7 +344,43 @@ const withdrawals = movements.filter(function (move) {
 });
 console.log(withdrawals);
 
-// using arrow function 
+// using arrow function
 
 const withdrawalsArrow = movements.filter(move => move < 0);
 console.log(withdrawalsArrow);
+*/
+
+/*                               Reduce Method                           */
+// use to boil down all the elements in the array to one single value 
+
+
+// //accumulator is like a snowball
+// const balance = movements.reduce(function (accumulator, currentElement, index, arr) {
+//   return accumulator + currentElement;
+// }, 0);
+
+// console.log(balance);
+
+
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
+console.log(balance);
+// do the same thing manually using for loop 
+
+let balanceFOr = 0;
+
+for (const mov of movements) balanceFOr += mov;
+console.log(balanceFOr);
+
+// now we are going to calculate the maximum value in the movement
+// using reduce method 
+
+const maximumValue = movements.reduce(function (accumulator, currentValue) {
+  if (accumulator > currentValue) {
+    return accumulator;
+    // we got to return accumulator buz in reduce method  we always have to somehow return the accumulator 
+  } else {
+    return currentValue;
+  };
+}, movements[0]);
+
+console.log(maximumValue);
