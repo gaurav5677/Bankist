@@ -85,7 +85,7 @@ const displayMovements = function (movements) { // receives data from movements 
     const html = `
      <div class="movements__row">
     <div class="movements__type  movements__type--${type}"> ${i + 1} ${type}</div>
-    <div class="movements__value">${mov}</div>
+    <div class="movements__value">${mov}€</div>
  </div>`;
 
     containerMovements.insertAdjacentHTML('afterbegin', html);
@@ -103,8 +103,48 @@ displayMovements(account1.movements);
 
 
 
+/*                          Display Balance                       */
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
 
 
+
+
+
+
+/*                          Display Balance   Summary                     */
+
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements.filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = movements.filter(curr => curr < 0)
+    .reduce((acc, curr) => acc + curr, 0);
+
+
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+
+  const interest = movements.filter(mov => mov > 0)
+    .map(deposite => deposite * 1.2 / 100)
+    .filter((int, i, arr) => {
+      // console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+
+  labelSumInterest.textContent = `${interest}`;
+}
+calcDisplaySummary(account1.movements);
 
 
 
@@ -120,7 +160,11 @@ const creatUserNames = function (accs) {
   // we use forEach method simply to do some work without returning anything 
 
   accs.forEach(function (acc) {
-    acc.username = acc.owner.toLowerCase().split(' ').map(word => word[0]).join('');
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(word => word[0])
+      .join('');
 
   });
 
@@ -196,9 +240,9 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // for (const movement of movements) {
 for (const [i, movement] of movements.entries()) {
   if (movement > 0) {
-    console.log(` Movement ${i + 1}:You deposited ${movement}`);
+    console.log(` Movement ${ i + 1 }:You deposited ${ movement } `);
   } else {
-    console.log(` Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+    console.log(` Movement ${ i + 1 }: You withdrew ${ Math.abs(movement) } `);
   }
 }
 
@@ -207,9 +251,9 @@ movements.forEach(function (mov, i, arr) {
   // here the name doesn't matter but what  matter is the order  , the  first one is the Current Element , the seconed one is index and the
   // thrid one is the entire arrya
   if (mov > 0) {
-    console.log(` Movement ${i + 1}:You deposited ${mov}`);
+    console.log(` Movement ${ i + 1 }:You deposited ${ mov } `);
   } else {
-    console.log(` Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
+    console.log(` Movement ${ i + 1 }: You withdrew ${ Math.abs(mov) } `);
   }
 });
 
@@ -227,14 +271,14 @@ const currencies = new Map([
 ]);
 
 currencies.forEach(function (value, key, map) {
-  console.log(`${key} : ${value}`);
+  console.log(`${ key } : ${ value } `);
 });
 
 // sets
 const currenciesUnique = new Set(["USD", "GBP", "USD", "EUR", "EUR"]);
 console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, _, map) {
-  console.log(`${value}: ${value}`);
+  console.log(`${ value }: ${ value } `);
 });
 */
 /*                   146 Coding Challenge Julia's and kate's dogs                          */
@@ -254,9 +298,9 @@ currenciesUnique.forEach(function (value, _, map) {
 //   // dog number 1 is an adult , and is 5 year old   or a puppy (Dog number 2 is still a puppy)
 //   dogs.forEach(function (dog, i) {
 //     if (dog >= 3) {
-//       console.log(`Dog number ${i + 1} is an adult , and is ${dog} years old `)
+//       console.log(`Dog number ${ i + 1 } is an adult, and is ${ dog } years old `)
 //     } else {
-//       console.log(`Dog number ${i + 1} is still a puppy`);
+//       console.log(`Dog number ${ i + 1 } is still a puppy`);
 //     }
 //   })
 // }
@@ -351,7 +395,7 @@ console.log(withdrawalsArrow);
 */
 
 /*                               Reduce Method                           */
-// use to boil down all the elements in the array to one single value 
+// use to boil down all the elements in the array to one single value
 
 
 // //accumulator is like a snowball
@@ -364,7 +408,7 @@ console.log(withdrawalsArrow);
 
 /* const balance = movements.reduce((acc, cur) => acc + cur, 0);
 console.log(balance);
-// do the same thing manually using for loop 
+// do the same thing manually using for loop
 
 let balanceFOr = 0;
 
@@ -375,6 +419,7 @@ console.log(balanceFOr);
 // now we are going to calculate the maximum value in the movement
 // using reduce method 
 
+/*
 const maximumValue = movements.reduce(function (accumulator, currentValue) {
   if (accumulator > currentValue) {
     return accumulator;
@@ -393,4 +438,21 @@ const max = movements.reduce((acc, current) => {
 }, movements[0]);
 
 console.log(max);
+
+*/
+
+
+
+
+/*                              The Magic of Chaining Methods                   */
+
+// using all the method together ( filter , map , reduce ) 
+
+const eurToUsd = 1.1;
+
+const totalDepositsUSD = movements.filter(curr => curr > 0)
+  .map(curr => curr * eurToUsd)
+  .reduce((acc, curr) => acc + curr, 0);
+
+console.log(totalDepositsUSD);
 
