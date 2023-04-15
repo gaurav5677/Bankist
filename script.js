@@ -97,7 +97,7 @@ const displayMovements = function (movements) { // receives data from movements 
 };
 
 
-displayMovements(account1.movements);
+// displayMovements(account1.movements);
 
 
 
@@ -111,7 +111,7 @@ const calcDisplayBalance = function (movements) {
   labelBalance.textContent = `${balance} EUR`;
 };
 
-calcDisplayBalance(account1.movements);
+// calcDisplayBalance(account1.movements);
 
 
 
@@ -121,21 +121,21 @@ calcDisplayBalance(account1.movements);
 /*                          Display Balance   Summary                     */
 
 
-const calcDisplaySummary = function (movements) {
-  const incomes = movements.filter(mov => mov > 0)
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements.filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
 
   labelSumIn.textContent = `${incomes}€`;
 
-  const out = movements.filter(curr => curr < 0)
+  const out = acc.movements.filter(curr => curr < 0)
     .reduce((acc, curr) => acc + curr, 0);
 
 
   labelSumOut.textContent = `${Math.abs(out)}€`;
 
 
-  const interest = movements.filter(mov => mov > 0)
-    .map(deposite => deposite * 1.2 / 100)
+  const interest = acc.movements.filter(mov => mov > 0)
+    .map(deposite => deposite * acc.interestRate / 100)
     .filter((int, i, arr) => {
       // console.log(arr);
       return int >= 1;
@@ -144,7 +144,7 @@ const calcDisplaySummary = function (movements) {
 
   labelSumInterest.textContent = `${interest}`;
 }
-calcDisplaySummary(account1.movements);
+// calcDisplaySummary(account1.movements);
 
 
 
@@ -173,7 +173,7 @@ const creatUserNames = function (accs) {
 };
 
 creatUserNames(accounts);
-console.log(accounts);
+// console.log(accounts);
 
 // console.log(creatUserNames("Steven Thomas Williams"));
 // const user = "Steven Thomas Williams"; // stw
@@ -181,6 +181,44 @@ console.log(accounts);
 
 
 // console.log(username);
+
+/*                 Implementing L0gin                    */
+let currentAccount;
+
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+  // as for default this will then prevent  this form from submiting   
+  // console.log('LOGIN');
+
+  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+  console.log(currentAccount);
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // console.log("Login")
+
+    // Display UI and Message 
+    labelWelcome.textContent = `Welcome Back , ${currentAccount.owner.split(' ')[0]}`;
+
+    containerApp.style.opacity = 100;
+
+    // clear the input field 
+    inputLoginUsername.value = inputLoginPin.value = '';
+
+    inputLoginPin.blur();
+    // Display movements
+    displayMovements(currentAccount.movements);
+
+    // Display balance 
+    calcDisplayBalance(currentAccount.movements);
+    // Display summary 
+    calcDisplaySummary(currentAccount);
+
+
+
+  }
+  // converted into Number becz its always in string 
+
+})
 
 
 
@@ -459,13 +497,13 @@ console.log(max);
 
 /*                      Find Method                  */
 
-// Use to retrieve One Element of an arrya based on a condition 
+// Use to retrieve One Element of an arrya based on a condition
 
-const firstWithdrawal = movements.find(mov => mov < 0);
-console.log(movements);
-console.log(firstWithdrawal);
+// const firstWithdrawal = movements.find(mov => mov < 0);
+// console.log(movements);
+// console.log(firstWithdrawal);
 
-const account = accounts.find(acc => acc.owner === 'Jessica Davis');
-console.log(account);
+// const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+// console.log(account);
 
 // implement the above in for off loop 
