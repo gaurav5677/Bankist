@@ -456,3 +456,5 @@ const totalDepositsUSD = movements.filter(curr => curr > 0)
 
 console.log(totalDepositsUSD);
 
+
+
