@@ -417,13 +417,13 @@ console.log(balanceFOr);
 
 */
 // now we are going to calculate the maximum value in the movement
-// using reduce method 
+// using reduce method
 
 /*
 const maximumValue = movements.reduce(function (accumulator, currentValue) {
   if (accumulator > currentValue) {
     return accumulator;
-    // we got to return accumulator buz in reduce method  we always have to somehow return the accumulator 
+    // we got to return accumulator buz in reduce method  we always have to somehow return the accumulator
   } else {
     return currentValue;
   };
@@ -431,7 +431,7 @@ const maximumValue = movements.reduce(function (accumulator, currentValue) {
 
 console.log(maximumValue);
 
-// converting the  in Arrow Function 
+// converting the  in Arrow Function
 const max = movements.reduce((acc, current) => {
   if (acc > current) return acc;
   else return current;
@@ -446,15 +446,26 @@ console.log(max);
 
 /*                              The Magic of Chaining Methods                   */
 
-// using all the method together ( filter , map , reduce ) 
+// using all the method together ( filter , map , reduce )
 
-const eurToUsd = 1.1;
+// const eurToUsd = 1.1;
 
-const totalDepositsUSD = movements.filter(curr => curr > 0)
-  .map(curr => curr * eurToUsd)
-  .reduce((acc, curr) => acc + curr, 0);
+// const totalDepositsUSD = movements.filter(curr => curr > 0)
+//   .map(curr => curr * eurToUsd)
+//   .reduce((acc, curr) => acc + curr, 0);
 
-console.log(totalDepositsUSD);
+// console.log(totalDepositsUSD);
 
 
+/*                      Find Method                  */
 
+// Use to retrieve One Element of an arrya based on a condition 
+
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+
+// implement the above in for off loop 
