@@ -105,10 +105,10 @@ const displayMovements = function (movements) { // receives data from movements 
 
 /*                          Display Balance                       */
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
 
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${acc.balance} EUR`;
 };
 
 // calcDisplayBalance(account1.movements);
@@ -180,9 +180,25 @@ creatUserNames(accounts);
 
 
 
+
+
 // console.log(username);
 
-/*                 Implementing L0gin                    */
+
+const updateUI = function (acc) {
+  // Display movements
+  displayMovements(acc.movements);
+
+  // Display balance 
+  calcDisplayBalance(acc);
+  // Display summary 
+  calcDisplaySummary(acc);
+}
+
+
+
+
+/*           L0gin   Implementation                       */
 let currentAccount;
 
 btnLogin.addEventListener('click', function (e) {
@@ -194,7 +210,8 @@ btnLogin.addEventListener('click', function (e) {
   console.log(currentAccount);
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    // console.log("Login")
+    // ? this will check whether this account is present or not 
+    // console.log("Login")   
 
     // Display UI and Message 
     labelWelcome.textContent = `Welcome Back , ${currentAccount.owner.split(' ')[0]}`;
@@ -204,15 +221,13 @@ btnLogin.addEventListener('click', function (e) {
     // clear the input field 
     inputLoginUsername.value = inputLoginPin.value = '';
 
+
+    // this will blur the login credentials 
     inputLoginPin.blur();
-    // Display movements
-    displayMovements(currentAccount.movements);
 
-    // Display balance 
-    calcDisplayBalance(currentAccount.movements);
-    // Display summary 
-    calcDisplaySummary(currentAccount);
 
+    // updated uI
+    updateUI(currentAccount);
 
 
   }
@@ -223,10 +238,33 @@ btnLogin.addEventListener('click', function (e) {
 
 
 
+/*                                    Transfer Monney form one to another                      */
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  // creating some data 
+  const amount = Number(inputTransferAmount.value);
+
+  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+
+  // console.log(amount, receiverAcc);
+
+  inputTransferAmount.value = inputTransferTo.value = '';
+
+  if (amount > 0 && receiverAcc &&
+    currentAccount.balance >= amount && receiverAcc?.username !== currentAccount.username) {
+    // console.log('Transfer valid');
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+
+
+    // Update UI 
+    updateUI(currentAccount);
+  }
+});
+
+///////////////////////////////// LECTURES  ///////////////////////////////////////////////////
+
 
 //
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
