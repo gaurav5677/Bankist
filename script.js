@@ -260,8 +260,63 @@ btnTransfer.addEventListener('click', function (e) {
 
     // Update UI 
     updateUI(currentAccount);
+
   }
 });
+
+
+
+
+
+
+
+//// Loan section 
+
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    currentAccount.movements.push(amount);
+
+    updateUI(currentAccount);
+
+
+  }
+
+  inputLoanAmount.value = '';
+})
+
+
+
+// Delelte account 
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  // console.log('Delete');
+
+  if (inputCloseUsername.value === currentAccount.username && Number(inputClosePin.value) === currentAccount.pin) {
+
+
+    const index = accounts.findIndex(acc => acc.username === currentAccount.username);
+    console.log(index);
+
+    // Delete Account 
+    accounts.splice(index, 1);
+
+
+    // hide ui 
+    containerApp.style.opacity = 0;
+
+  }
+  inputCloseUsername.value = inputClosePin.value = '';
+});
+
+/*                       The FindIndex Method                             */
+// To delete an element from the array we use Splice method,but 
+// for splic method , we need index at which we want to delete , 
+// and that index could come from the findIndex Method 
 
 ///////////////////////////////// LECTURES  ///////////////////////////////////////////////////
 
