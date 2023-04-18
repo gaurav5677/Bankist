@@ -9,22 +9,35 @@
 
    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet" />
 
+   <link rel="stylesheet" href="loginStyle.css" />
    <link rel="stylesheet" href="style.css" />
-   <title>Bankist</title>
+   <link rel="stylesheet" href="responsive.css" />
+   <title>Login - Bankist</title>
 </head>
 
 <body>
    <!-- TOP NAVIGATION -->
-   <nav>
-      <p class="welcome">Log in to get started</p>
+   <header class="login-nav">
       <img src="logo.png" alt="Logo" class="logo" />
+      <article class="login-heading">
+         <h1 class="welcome">Log in to get started</h1>
+         <div class="tooltip"> <img class="hint-icon" src="https://img.icons8.com/ios/50/000000/questions.png" />
+            <article class="tooltiptext">
+               <p>Username: <span>ww</span></p>
+               <p>Password: <span>1111</span></p>
+            </article>
+         </div>
+      </article>
       <form class="login">
          <input type="text" placeholder="user" class="login__input login__input--user" />
-         <!-- In practice, use type="password" -->
-         <input type="text" placeholder="PIN" maxlength="4" class="login__input login__input--pin" />
+         <input type="password" placeholder="password" maxlength="4" class="login__input login__input--password" />
          <button class="login__btn">&rarr;</button>
+         <p class="warning-text"></p>
       </form>
-   </nav>
+
+      <a class="back-to-main" href="">Back to main </a>
+
+   </header>
 
    <main class="app">
       <!-- BALANCE -->
@@ -98,17 +111,14 @@
             <label class="form__label">Confirm PIN</label>
          </form>
       </div>
+      <a class="back-to-main" href="">Back to main </a>
+      <button class="btn logout">Log out</button>
 
       <!-- LOGOUT TIMER -->
       <p class="logout-timer">
          You will be logged out in <span class="timer">05:00</span>
       </p>
    </main>
-
-   <!-- <footer>
-      &copy; by Jonas Schmedtmann. Don't claim as your own :)
-    </footer> -->
-
    <script src="script.js"></script>
 </body>
 
